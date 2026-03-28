@@ -49,5 +49,7 @@ async function weatherApp(cityName) {
   }
   if (condition === "Atmosphere") {
     return showIcon("using/icons8-fog-100-cropped.svg");
+  } else {
+    return showIcon("using/icons8-fog-100-cropped.svg");
   }
 }
