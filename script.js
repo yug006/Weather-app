@@ -6,9 +6,17 @@ const weatherTemp = document.querySelector("#weather-temp");
 const humidityValue = document.querySelector("#humidity-value");
 const windValue = document.querySelector("#wind-value");
 
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const cityName = input.value.trim();
+    if (!cityName) return;
+    weatherApp(cityName);
+  }
+});
+
 searchBtn.addEventListener("click", () => {
   const cityName = input.value.trim();
-
+  if (!cityName) return;
   weatherApp(cityName);
 });
 
@@ -30,8 +38,6 @@ async function weatherApp(cityName) {
 
   const responseJson = await response.json();
   const condition = responseJson.weather[0].main;
-
-  console.log(responseJson);
 
   weatherTemp.textContent = responseJson.main.temp + "°C";
   humidityValue.textContent = responseJson.main.humidity + "%";
