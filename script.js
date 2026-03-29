@@ -3,6 +3,8 @@ const searchBtn = document.querySelector("#searchBtn");
 const name = document.querySelector("#city-name");
 const weatherIcon = document.querySelector("#weather-icon");
 const weatherTemp = document.querySelector("#weather-temp");
+const humidityValue = document.querySelector("#humidity-value");
+const windValue = document.querySelector("#wind-value");
 
 searchBtn.addEventListener("click", () => {
   const cityName = input.value.trim();
@@ -13,6 +15,12 @@ searchBtn.addEventListener("click", () => {
 function showIcon(src) {
   weatherIcon.src = src;
   weatherIcon.style.display = "block";
+  document.querySelector("#weather-information").style.display = "block";
+
+  weatherIcon.onerror = () => {
+    weatherIcon.onerror = null;
+    weatherIcon.src = "using/cloudy-day-1-cropped.svg";
+  };
 }
 
 async function weatherApp(cityName) {
@@ -25,7 +33,9 @@ async function weatherApp(cityName) {
 
   console.log(responseJson);
 
-  weatherTemp.textContent = responseJson.main.temp + "/°C";
+  weatherTemp.textContent = responseJson.main.temp + "°C";
+  humidityValue.textContent = responseJson.main.humidity + "%";
+  windValue.textContent = responseJson.wind.speed + " km/h";
   name.textContent = responseJson.name;
 
   if (condition === "Clear") {
@@ -46,9 +56,6 @@ async function weatherApp(cityName) {
 
   if (condition === "Thunderstorm") {
     return showIcon("using/thunder-cropped.svg");
-  }
-  if (condition === "Atmosphere") {
-    return showIcon("using/icons8-fog-100-cropped.svg");
   } else {
     return showIcon("using/icons8-fog-100-cropped.svg");
   }

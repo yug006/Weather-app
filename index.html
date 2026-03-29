@@ -13,21 +13,32 @@
     <div class="container">
         <div class="weather-card">
             <div id="input">
-                <input type="text" name="CityName" id="input-field">
+                <input type="text" name="CityName" id="input-field" placeholder="Enter city name">
                 <button id="searchBtn">Search</button>
             </div>
             <div id="weather-data">
-
                 <img id="weather-icon" src="">
                 <h2 id="city-name"></h2>
                 <h3 id="weather-temp"></h3>
             </div>
-
+            <div id="weather-information">
+                <div class="icon-img">
+                    <div class="info-block">
+                        <img src="using/humidity_percentage_24dp_EFEFEF_FILL0_wght400_GRAD0_opsz24.svg" alt="Humidity"
+                            class="bottom-icon">
+                        <span>Humidity</span>
+                        <span id="humidity-value">0%</span>
+                    </div>
+                    <div class="info-block">
+                        <img src="using/airwave_24dp_EFEFEF_FILL0_wght400_GRAD0_opsz24.svg" alt="Wind"
+                            class="bottom-icon">
+                        <span>Wind</span>
+                        <span id="wind-value">0 km/h</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
 
     <script src="script.js"></script>
 </body>
